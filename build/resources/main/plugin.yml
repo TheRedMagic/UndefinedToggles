@@ -1,0 +1,4 @@
+name: UndefinedToggles
+version: '${version}'
+main: com.redmagic.undefinedtoggles.UndefinedToggles
+api-version: '1.20'

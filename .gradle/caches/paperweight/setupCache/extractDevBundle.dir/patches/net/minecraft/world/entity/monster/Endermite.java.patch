@@ -1,0 +1,54 @@
+--- a/net/minecraft/world/entity/monster/Endermite.java
++++ b/net/minecraft/world/entity/monster/Endermite.java
+@@ -29,7 +29,12 @@
+ import net.minecraft.world.level.block.state.BlockState;
+ import org.joml.Vector3f;
+ 
++// CraftBukkit start
++import org.bukkit.event.entity.EntityRemoveEvent;
++// CraftBukkit end
++
+ public class Endermite extends Monster {
++
+     private static final int MAX_LIFE = 2400;
+     public int life;
+ 
+@@ -46,7 +51,7 @@
+         this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1.0D));
+         this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 8.0F));
+         this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
+-        this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)).setAlertOthers());
++        this.targetSelector.addGoal(1, (new HurtByTargetGoal(this, new Class[0])).setAlertOthers());
+         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
+     }
+ 
+@@ -112,7 +117,7 @@
+     public void aiStep() {
+         super.aiStep();
+         if (this.level().isClientSide) {
+-            for(int i = 0; i < 2; ++i) {
++            for (int i = 0; i < 2; ++i) {
+                 this.level().addParticle(ParticleTypes.PORTAL, this.getRandomX(0.5D), this.getRandomY(), this.getRandomZ(0.5D), (this.random.nextDouble() - 0.5D) * 2.0D, -this.random.nextDouble(), (this.random.nextDouble() - 0.5D) * 2.0D);
+             }
+         } else {
+@@ -121,7 +126,7 @@
+             }
+ 
+             if (this.life >= 2400) {
+-                this.discard();
++                this.discard(EntityRemoveEvent.Cause.DESPAWN); // CraftBukkit - add Bukkit remove cause
+             }
+         }
+ 
+@@ -129,8 +134,9 @@
+ 
+     public static boolean checkEndermiteSpawnRules(EntityType<Endermite> type, LevelAccessor world, MobSpawnType spawnReason, BlockPos pos, RandomSource random) {
+         if (checkAnyLightMonsterSpawnRules(type, world, spawnReason, pos, random)) {
+-            Player player = world.getNearestPlayer((double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D, 5.0D, true);
+-            return player == null;
++            Player entityhuman = world.getNearestPlayer((double) pos.getX() + 0.5D, (double) pos.getY() + 0.5D, (double) pos.getZ() + 0.5D, 5.0D, true);
++
++            return entityhuman == null;
+         } else {
+             return false;
+         }

@@ -1,0 +1,23 @@
+cooldowns:
+  ender-pearls: -1
+  fireworks: -1
+  bow: -1
+  trident: -1
+
+toggles:
+  armor-trims-copying: false
+  upgrade-template-copying: false
+  villager-change-trade: false
+  tnt-block-damage: false
+
+reduction:
+  crystals: -0.0
+  tnt-minecart: -0.0
+  tnt: -0.0
+  anchors: -0.0
+
+blocked:
+  commands:
+    kill:
+      permission: ""
+      block-tab-complete: false
