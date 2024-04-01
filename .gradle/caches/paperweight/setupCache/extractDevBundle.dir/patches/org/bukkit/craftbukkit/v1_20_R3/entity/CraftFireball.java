@@ -46,17 +46,19 @@ public class CraftFireball extends AbstractProjectile implements Fireball {
         this.update(); // SPIGOT-6579
     }
 
-    // Paper start - set direction without normalizing
+    // Paper start - Expose power on fireball projectiles
     @Override
-    public void setVelocity(Vector velocity) {
-        Preconditions.checkArgument(velocity != null, "Vector velocity cannot be null");
-        velocity.checkFinite();
-        this.getHandle().xPower = velocity.getX();
-        this.getHandle().yPower = velocity.getY();
-        this.getHandle().zPower = velocity.getZ();
-        update();
+    public void setPower(final Vector power) {
+        this.getHandle().xPower = power.getX();
+        this.getHandle().yPower = power.getY();
+        this.getHandle().zPower = power.getZ();
     }
-    // Paper end - set direction without normalizing
+
+    @Override
+    public Vector getPower() {
+        return new Vector(this.getHandle().xPower, this.getHandle().yPower, this.getHandle().zPower);
+    }
+    // Paper end - Expose power on fireball projectiles
 
     @Override
     public AbstractHurtingProjectile getHandle() {

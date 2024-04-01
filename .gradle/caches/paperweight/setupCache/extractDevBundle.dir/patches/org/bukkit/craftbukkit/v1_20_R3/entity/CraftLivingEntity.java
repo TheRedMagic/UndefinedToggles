@@ -958,13 +958,12 @@ public class CraftLivingEntity extends CraftEntity implements LivingEntity {
 
     @Override
     public boolean isInvisible() {
-        return this.getHandle().isInvisible();
+        return super.isInvisible(); // Paper - move invisibility up to Entity - diff on change
     }
 
     @Override
     public void setInvisible(boolean invisible) {
-        this.getHandle().persistentInvisibility = invisible;
-        this.getHandle().setSharedFlag(5, invisible);
+        super.setInvisible(invisible); // Paper - move invisibility up to Entity
     }
     // Paper start
     @Override

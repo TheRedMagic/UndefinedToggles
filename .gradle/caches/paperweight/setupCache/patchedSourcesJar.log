@@ -383,7 +383,7 @@
 [DEBUG]  Hunk 2: EXACT: @@ -82,19 +87,21 @@
 [DEBUG] Patching: net/minecraft/network/chat/contents/TranslatableContents.java
 [DEBUG]  Hunk 0: EXACT: @@ -197,6 +197,15 @@
-[DEBUG]  Hunk 1: EXACT: @@ -208,6 +217,24 @@
+[DEBUG]  Hunk 1: EXACT: @@ -208,6 +217,25 @@
 [DEBUG] Patching: net/minecraft/network/protocol/Packet.java
 [DEBUG]  Hunk 0: EXACT: @@ -10,6 +10,36 @@
 [DEBUG] Patching: net/minecraft/network/protocol/PacketUtils.java
@@ -5015,12 +5015,12 @@
 [DEBUG]  Hunk 5: EXACT: @@ -98,9 +116,16 @@
 [DEBUG]  Hunk 6: EXACT: @@ -118,8 +143,13 @@
 [DEBUG]  Hunk 7: EXACT: @@ -128,26 +158,41 @@
-[DEBUG]  Hunk 8: EXACT: @@ -157,65 +202,92 @@
-[DEBUG]  Hunk 9: EXACT: @@ -225,19 +297,26 @@
-[DEBUG]  Hunk 10: EXACT: @@ -247,33 +326,41 @@
-[DEBUG]  Hunk 11: EXACT: @@ -283,12 +370,13 @@
-[DEBUG]  Hunk 12: EXACT: @@ -296,6 +384,11 @@
-[DEBUG]  Hunk 13: EXACT: @@ -305,41 +398,50 @@
+[DEBUG]  Hunk 8: EXACT: @@ -157,65 +202,98 @@
+[DEBUG]  Hunk 9: EXACT: @@ -225,19 +303,26 @@
+[DEBUG]  Hunk 10: EXACT: @@ -247,33 +332,41 @@
+[DEBUG]  Hunk 11: EXACT: @@ -283,12 +376,13 @@
+[DEBUG]  Hunk 12: EXACT: @@ -296,6 +390,11 @@
+[DEBUG]  Hunk 13: EXACT: @@ -305,41 +404,50 @@
 [DEBUG] Patching: net/minecraft/world/level/block/entity/BellBlockEntity.java
 [DEBUG]  Hunk 0: EXACT: @@ -1,5 +1,6 @@
 [DEBUG]  Hunk 1: EXACT: @@ -20,6 +21,7 @@

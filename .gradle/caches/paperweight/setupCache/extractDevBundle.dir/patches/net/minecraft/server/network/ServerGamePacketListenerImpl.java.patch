@@ -731,7 +731,7 @@
 +        ParseResults<CommandSourceStack> parseresults = this.server.getCommands().getDispatcher().parse(stringreader, this.player.createCommandSourceStack());
 +        // Paper start - Handle non-recoverable exceptions
 +        if (!parseresults.getExceptions().isEmpty()
-+            && parseresults.getExceptions().values().stream().anyMatch(e -> e instanceof com.mojang.brigadier.exceptions.TagParseCommandSyntaxException)) {
++            && parseresults.getExceptions().values().stream().anyMatch(e -> e instanceof io.papermc.paper.brigadier.TagParseCommandSyntaxException)) {
 +            this.disconnect(Component.translatable("disconnect.spam"), org.bukkit.event.player.PlayerKickEvent.Cause.SPAM);
 +            return;
 +        }

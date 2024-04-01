@@ -88,6 +88,7 @@ public class CraftArrow extends AbstractProjectile implements AbstractArrow {
 
     // Paper start
     @Override
+    @org.jetbrains.annotations.NotNull
     public org.bukkit.craftbukkit.v1_20_R3.inventory.CraftItemStack getItemStack() {
         return org.bukkit.craftbukkit.v1_20_R3.inventory.CraftItemStack.asCraftMirror(getHandle().getPickupItem());
     }
@@ -111,16 +112,6 @@ public class CraftArrow extends AbstractProjectile implements AbstractArrow {
     @Override
     public void setHitSound(@org.jetbrains.annotations.NotNull org.bukkit.Sound sound) {
         this.getHandle().setSoundEvent(org.bukkit.craftbukkit.v1_20_R3.CraftSound.bukkitToMinecraft(sound));
-    }
-
-    @Override
-    public void setNoPhysics(boolean noPhysics) {
-        this.getHandle().setNoPhysics(noPhysics);
-    }
-
-    @Override
-    public boolean hasNoPhysics() {
-        return this.getHandle().isNoPhysics();
     }
     // Paper end
 

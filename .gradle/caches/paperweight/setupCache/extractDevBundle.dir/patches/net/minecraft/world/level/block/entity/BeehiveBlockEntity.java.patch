@@ -174,7 +174,7 @@
              super.setChanged();
          }
      }
-@@ -157,65 +202,92 @@
+@@ -157,65 +202,98 @@
      }
  
      private static boolean releaseOccupant(Level world, BlockPos pos, BlockState state, BeehiveBlockEntity.BeeData bee, @Nullable List<Entity> entities, BeehiveBlockEntity.BeeReleaseStatus beeState, @Nullable BlockPos flowerPos) {
@@ -260,7 +260,13 @@
                                          }
  
 -                                        world.setBlockAndUpdate(pos, state.setValue(BeehiveBlock.HONEY_LEVEL, Integer.valueOf(i + j)));
-+                                        world.setBlockAndUpdate(blockposition, (BlockState) iblockdata.setValue(BeehiveBlock.HONEY_LEVEL, i + j));
++                                        // Paper start - Fire EntityChangeBlockEvent in more places
++                                        BlockState newBlockState = iblockdata.setValue(BeehiveBlock.HONEY_LEVEL, i + j);
++
++                                        if (org.bukkit.craftbukkit.v1_20_R3.event.CraftEventFactory.callEntityChangeBlockEvent(entitybee, blockposition, newBlockState)) {
++                                            world.setBlockAndUpdate(blockposition, newBlockState);
++                                        }
++                                        // Paper end - Fire EntityChangeBlockEvent in more places
                                      }
                                  }
                              }
@@ -298,7 +304,7 @@
                      }
                  } else {
                      return false;
-@@ -225,19 +297,26 @@
+@@ -225,19 +303,26 @@
      }
  
      static void removeIgnoredBeeTags(CompoundTag compound) {
@@ -332,7 +338,7 @@
  
          bee.setInLoveTime(Math.max(0, bee.getInLoveTime() - ticks));
      }
-@@ -247,33 +326,41 @@
+@@ -247,33 +332,41 @@
      }
  
      private static void tickOccupants(Level world, BlockPos pos, BlockState state, List<BeehiveBlockEntity.BeeData> bees, @Nullable BlockPos flowerPos) {
@@ -388,7 +394,7 @@
          }
  
          DebugPackets.sendHiveInfo(world, pos, state, blockEntity);
-@@ -283,12 +370,13 @@
+@@ -283,12 +376,13 @@
      public void load(CompoundTag nbt) {
          super.load(nbt);
          this.stored.clear();
@@ -407,7 +413,7 @@
          }
  
          this.savedFlowerPos = null;
-@@ -296,6 +384,11 @@
+@@ -296,6 +390,11 @@
              this.savedFlowerPos = NbtUtils.readBlockPos(nbt.getCompound("FlowerPos"));
          }
  
@@ -419,7 +425,7 @@
      }
  
      @Override
-@@ -305,41 +398,50 @@
+@@ -305,41 +404,50 @@
          if (this.hasSavedFlowerPos()) {
              nbt.put("FlowerPos", NbtUtils.writeBlockPos(this.savedFlowerPos));
          }

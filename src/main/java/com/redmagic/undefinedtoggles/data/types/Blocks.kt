@@ -1,0 +1,50 @@
+package com.redmagic.undefinedtoggles.data.types
+
+import com.mojang.datafixers.kinds.IdF.Mu
+import com.redmagic.undefinedtoggles.UndefinedToggles
+import org.bukkit.Material
+import org.bukkit.entity.EntityType
+
+class Blocks(private val plugin: UndefinedToggles) {
+
+    val blockedCommands: MutableList<BlockCommand> = mutableListOf()
+
+    val spawning: BlockSpawning
+
+    init {
+        plugin.configuration.getConfigurationSection("blocked.commands")?.getKeys(false)?.forEach {
+            val command = it
+            val permission = plugin.configuration.getString("blocked.commands.$command.permission")!!
+            val blockTabComplete = plugin.configuration.getBoolean("blocked.commands.$command.block-tab-complete")
+            blockedCommands.add(BlockCommand(command, permission, blockTabComplete))
+        }
+
+        val blockedEntity: MutableList<EntityType> = mutableListOf()
+
+        val blockItem: MutableList<Material> = mutableListOf()
+
+        plugin.configuration.getStringList("blocked.spawning.mobs").forEach {
+            blockedEntity.add(EntityType.valueOf(it))
+        }
+
+        plugin.configuration.getStringList("blocked.spawning.item").forEach {
+            blockItem.add(Material.valueOf(it))
+        }
+
+        spawning = BlockSpawning(blockedEntity, blockItem, plugin)
+
+
+    }
+
+    fun save(){
+
+        blockedCommands.forEach {
+            plugin.configuration.set("blocked.commands.${it.command}.permission", it.permission)
+            plugin.configuration.set("blocked.commands.${it.command}.block-tab-complete", it.blockTabComplete)
+        }
+
+        spawning.save()
+    }
+
+    
+}

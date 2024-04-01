@@ -214,7 +214,7 @@ public class CraftPlayerProfile implements PlayerProfile, SharedPlayerProfile {
                     // if old has it, assume its newer, so overwrite, else use cached if it was set and ours wasn't
                     copyProfileProperties(this.profile, profile);
                     this.profile = profile;
-                } else {
+                } else if (profile != this.profile) {
                     copyProfileProperties(profile, this.profile);
                 }
             }
@@ -245,6 +245,9 @@ public class CraftPlayerProfile implements PlayerProfile, SharedPlayerProfile {
     }
 
     private static void copyProfileProperties(GameProfile source, GameProfile target, boolean clearTarget) {
+        if (source == target) {
+            throw new IllegalArgumentException("Source and target profiles are the same (" + source + ")");
+        }
         PropertyMap sourceProperties = source.getProperties();
         PropertyMap targetProperties = target.getProperties();
         if (clearTarget) targetProperties.clear();

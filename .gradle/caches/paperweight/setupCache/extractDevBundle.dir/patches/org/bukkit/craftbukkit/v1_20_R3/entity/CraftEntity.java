@@ -1206,6 +1206,30 @@ public abstract class CraftEntity implements org.bukkit.entity.Entity {
         return this.entity.getBukkitYaw();
     }
     // Paper end
+
+    // Paper start - missing entity api
+    @Override
+    public boolean isInvisible() {  // Paper - moved up from LivingEntity
+        return this.getHandle().isInvisible();
+    }
+
+    @Override
+    public void setInvisible(boolean invisible) {  // Paper - moved up from LivingEntity
+        this.getHandle().persistentInvisibility = invisible;
+        this.getHandle().setSharedFlag(Entity.FLAG_INVISIBLE, invisible);
+    }
+
+    @Override
+    public void setNoPhysics(boolean noPhysics) {
+        this.getHandle().noPhysics = noPhysics;
+    }
+
+    @Override
+    public boolean hasNoPhysics() {
+        return this.getHandle().noPhysics;
+    }
+    // Paper end - missing entity api
+
     // Paper start - Collision API
     @Override
     public boolean collidesAt(@org.jetbrains.annotations.NotNull Location location) {

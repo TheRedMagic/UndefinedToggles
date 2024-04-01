@@ -63,7 +63,7 @@
 +    private void increaseDepth() throws CommandSyntaxException {
 +        this.depth++;
 +        if (this.depth > 512) {
-+            throw new com.mojang.brigadier.exceptions.TagParseCommandSyntaxException("NBT tag is too complex, depth > 512");
++            throw new io.papermc.paper.brigadier.TagParseCommandSyntaxException("NBT tag is too complex, depth > 512");
 +        }
 +    }
  }

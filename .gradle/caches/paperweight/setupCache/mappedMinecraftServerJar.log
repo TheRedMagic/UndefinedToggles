@@ -9,4 +9,4 @@ Invalid access from method instruction in net/minecraft/data/worldgen/TrialChamb
 Invalid access from method instruction in net/minecraft/data/worldgen/TrialChambersStructurePools to package-private class net/minecraft/world/level/levelgen/structure/pools/alias/Random after remapping.
 Invalid access from method instruction in net/minecraft/data/worldgen/TrialChambersStructurePools to package-private class net/minecraft/world/level/levelgen/structure/pools/alias/Random after remapping.
 Fixing access for 3 classes and 0 members.
-Finished after 6636.10 ms.
+Finished after 4754,63 ms.

@@ -309,7 +309,7 @@ public class CommandDispatcher<S> {
                 try {
                     child.parse(reader, context);
                     // Paper start - Handle non-recoverable exceptions
-                } catch (final com.mojang.brigadier.exceptions.TagParseCommandSyntaxException e) {
+                } catch (final io.papermc.paper.brigadier.TagParseCommandSyntaxException e) {
                     stop = true;
                     throw e;
                     // Paper end - Handle non-recoverable exceptions

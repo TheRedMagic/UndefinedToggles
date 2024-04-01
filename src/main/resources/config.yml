@@ -1,22 +1,33 @@
 cooldowns:
-  ender-pearls: -1
-  fireworks: -1
-  bow: -1
-  trident: -1
+  ender-pearls: -1.0
+  fireworks: -1.0
+  bow: -1.0
+  crossbow: -1.0
+  trident: -1.0
+  axe: -1.0
 
 toggles:
-  armor-trims-copying: false
-  upgrade-template-copying: false
-  villager-change-trade: false
-  tnt-block-damage: false
+  block-armor-trims-copying: false
+  block-upgrade-template-copying: false
+  block-villager-change-trade: false
+  block-tnt-block-damage: false
+  block-elytra: false
+  block-fireworks-with-elytra: false
 
 reduction:
   crystals: -0.0
   tnt-minecart: -0.0
   tnt: -0.0
   anchors: -0.0
+  bed-explosions: -0.0
 
 blocked:
+  max-amount:
+    totems: -1
+    potion: -1
+  spawning:
+    mobs:
+    item:
   commands:
     kill:
       permission: ""
