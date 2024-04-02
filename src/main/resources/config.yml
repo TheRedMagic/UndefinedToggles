@@ -15,11 +15,12 @@ toggles:
   block-fireworks-with-elytra: false
 
 reduction:
-  crystals: -0.0
-  tnt-minecart: -0.0
-  tnt: -0.0
-  anchors: -0.0
-  bed-explosions: -0.0
+  crystals: -1.0
+  tnt-minecart: -1.0
+  tnt: -1.0
+  anchors: -1.0
+  bed-explosions: -1.0
+  fall-damage: -1.0
 
 blocked:
   max-amount:

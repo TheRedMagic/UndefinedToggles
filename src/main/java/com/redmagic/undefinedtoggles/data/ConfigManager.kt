@@ -30,6 +30,7 @@ class ConfigManager(plugin: UndefinedToggles) {
         plugin.configuration.getDouble("reduction.tnt"),
         plugin.configuration.getDouble("reduction.anchors"),
         plugin.configuration.getDouble("reduction.bed-explosions"),
+        plugin.configuration.getDouble("reduction.fall-damage"),
         plugin
     )
 

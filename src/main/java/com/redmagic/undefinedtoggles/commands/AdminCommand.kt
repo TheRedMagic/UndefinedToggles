@@ -5,6 +5,7 @@ import com.redmagic.undefinedapi.command.CommandType
 import com.redmagic.undefinedapi.command.UndefinedCommand
 import com.redmagic.undefinedapi.menu.MenuManager.openMenu
 import com.redmagic.undefinedtoggles.UndefinedToggles
+import com.redmagic.undefinedtoggles.gui.admin.AdminGUI
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 
@@ -13,7 +14,7 @@ class AdminCommand(val plugin: UndefinedToggles): UndefinedCommand("admintoggles
     override fun execute(sender: CommandSender, args: Array<out String>) {
 
         val player = sender as Player
-        player.openMenu(plugin.guiManager.adminGUI)
+        player.openMenu(AdminGUI(plugin))
 
     }
 
