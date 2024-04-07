@@ -1,14 +1,14 @@
 package com.redmagic.undefinedtoggles.gui.admin.sub
 
 import com.redmagic.undefinedapi.builders.ItemBuilder
-import com.redmagic.undefinedapi.extension.string.toComponent
+import com.redmagic.undefinedapi.extension.string.translateColor
 import com.redmagic.undefinedapi.menu.MenuManager.openMenu
 import com.redmagic.undefinedapi.menu.MenuSize
 import com.redmagic.undefinedapi.menu.normal.UndefinedMenu
 import com.redmagic.undefinedapi.menu.normal.button.Button
 import com.redmagic.undefinedapi.menu.normal.button.MenuButton
 import com.redmagic.undefinedtoggles.UndefinedToggles
-import com.redmagic.undefinedtoggles.exstions.isNegative
+import com.redmagic.undefinedapi.extension.isNegative
 import net.wesjd.anvilgui.AnvilGUI
 import org.bukkit.Material
 import org.bukkit.inventory.Inventory
@@ -31,9 +31,9 @@ class CooldownGUI(private val plugin: UndefinedToggles): UndefinedMenu("ᴄᴏ�
         setAxe(this)
 
         setItem(18, ItemBuilder(Material.RED_STAINED_GLASS_PANE)
-            .setName("<!i><#d92323>ʙᴀᴄᴋ ᴛᴏ ᴀᴅᴍɪɴ ᴍᴇɴᴜ".toComponent())
-            .addLine(" ".toComponent())
-            .addLine("<!i><gray>ᴄʟɪᴄᴋ ᴛᴏ ɢᴏ ʙᴀᴄᴋ ᴛᴏ ᴀᴅᴍɪɴ ᴍᴇɴᴜ".toComponent()).build())
+            .setName("<reset><#d92323>ʙᴀᴄᴋ ᴛᴏ ᴀᴅᴍɪɴ ᴍᴇɴᴜ".translateColor())
+            .addLine(" ")
+            .addLine("<reset><gray>ᴄʟɪᴄᴋ ᴛᴏ ɢᴏ ʙᴀᴄᴋ ᴛᴏ ᴀᴅᴍɪɴ ᴍᴇɴᴜ".translateColor()).build())
 
         addButton(MenuButton(18, plugin.guiManager.adminGUI){})
 
@@ -52,7 +52,7 @@ class CooldownGUI(private val plugin: UndefinedToggles): UndefinedMenu("ᴄᴏ�
             }else if (click.isLeftClick){
 
                 val builder = AnvilGUI.Builder()
-                    .itemLeft(ItemBuilder(item!!.type).setName("<!i><#9710e6>ᴇɴᴅᴇʀ ᴘᴇᴀʀʟ ᴄᴏᴏʟᴅᴏᴡɴ".toComponent()).build())
+                    .itemLeft(ItemBuilder(item!!.type).setName("<reset><#9710e6>ᴇɴᴅᴇʀ ᴘᴇᴀʀʟ ᴄᴏᴏʟᴅᴏᴡɴ".translateColor()).build())
                     .title("ᴇɴᴅᴇʀ ᴘᴇᴀʀʟ ᴄᴏᴏʟᴅᴏᴡɴ")
                     .text(plugin.configManager.cooldowns.enderPearls.toString())
                     .plugin(plugin)
@@ -69,7 +69,7 @@ class CooldownGUI(private val plugin: UndefinedToggles): UndefinedMenu("ᴄᴏ�
                         setEnderPearlItem(this@createInventory)
 
                     }catch (e: NumberFormatException){
-                        player.sendMessage("<!i><#d92323>$text ɪѕ ɴᴏᴛ ᴀ ɴᴜᴍʙᴇʀ.".toComponent())
+                        player.sendMessage("<reset><#d92323>$text ɪѕ ɴᴏᴛ ᴀ ɴᴜᴍʙᴇʀ.".translateColor())
                     }
 
                     return@onClick listOf(AnvilGUI.ResponseAction.run{
@@ -97,7 +97,7 @@ class CooldownGUI(private val plugin: UndefinedToggles): UndefinedMenu("ᴄᴏ�
             }else if (click.isLeftClick){
 
                 val builder = AnvilGUI.Builder()
-                    .itemLeft(ItemBuilder(item!!.type).setName("<!i><#f56b3d>ꜰɪʀᴇᴡᴏʀᴋ ᴄᴏᴏʟᴅᴏᴡɴ".toComponent()).build())
+                    .itemLeft(ItemBuilder(item!!.type).setName("<reset><#f56b3d>ꜰɪʀᴇᴡᴏʀᴋ ᴄᴏᴏʟᴅᴏᴡɴ".translateColor()).build())
                     .title("ꜰɪʀᴇᴡᴏʀᴋ ᴄᴏᴏʟᴅᴏᴡɴ")
                     .text(plugin.configManager.cooldowns.fireworks.toString())
                     .plugin(plugin)
@@ -111,10 +111,10 @@ class CooldownGUI(private val plugin: UndefinedToggles): UndefinedMenu("ᴄᴏ�
 
                         plugin.configManager.cooldowns.fireworks = cooldown
 
-                        setEnderPearlItem(this@createInventory)
+                        setFirework(this@createInventory)
 
                     }catch (e: NumberFormatException){
-                        player.sendMessage("<!i><#d92323>$text ɪѕ ɴᴏᴛ ᴀ ɴᴜᴍʙᴇʀ.".toComponent())
+                        player.sendMessage("<reset><#d92323>$text ɪѕ ɴᴏᴛ ᴀ ɴᴜᴍʙᴇʀ.".translateColor())
                     }
 
                     return@onClick listOf(AnvilGUI.ResponseAction.run{
@@ -142,7 +142,7 @@ class CooldownGUI(private val plugin: UndefinedToggles): UndefinedMenu("ᴄᴏ�
             }else if (click.isLeftClick){
 
                 val builder = AnvilGUI.Builder()
-                    .itemLeft(ItemBuilder(item!!.type).setName("<!i><#f5be3d>ʙᴏᴡ ᴄᴏᴏʟᴅᴏᴡɴ".toComponent()).build())
+                    .itemLeft(ItemBuilder(item!!.type).setName("<reset><#f5be3d>ʙᴏᴡ ᴄᴏᴏʟᴅᴏᴡɴ".translateColor()).build())
                     .title("ʙᴏᴡ ᴄᴏᴏʟᴅᴏᴡɴ")
                     .text(plugin.configManager.cooldowns.bow.toString())
                     .plugin(plugin)
@@ -159,7 +159,7 @@ class CooldownGUI(private val plugin: UndefinedToggles): UndefinedMenu("ᴄᴏ�
                         setBow(this@createInventory)
 
                     }catch (e: NumberFormatException){
-                        player.sendMessage("<!i><#d92323>$text ɪѕ ɴᴏᴛ ᴀ ɴᴜᴍʙᴇʀ.".toComponent())
+                        player.sendMessage("<reset><#d92323>$text ɪѕ ɴᴏᴛ ᴀ ɴᴜᴍʙᴇʀ.".translateColor())
                     }
 
                     return@onClick listOf(AnvilGUI.ResponseAction.run{
@@ -187,7 +187,7 @@ class CooldownGUI(private val plugin: UndefinedToggles): UndefinedMenu("ᴄᴏ�
             }else if (click.isLeftClick){
 
                 val builder = AnvilGUI.Builder()
-                    .itemLeft(ItemBuilder(item!!.type).setName("<!i><#3da5f5>ᴛʀɪᴅᴇɴᴛ ᴄᴏᴏʟᴅᴏᴡɴ".toComponent()).build())
+                    .itemLeft(ItemBuilder(item!!.type).setName("<reset><#3da5f5>ᴛʀɪᴅᴇɴᴛ ᴄᴏᴏʟᴅᴏᴡɴ".translateColor()).build())
                     .title("ᴛʀɪᴅᴇɴᴛ ᴄᴏᴏʟᴅᴏᴡɴ")
                     .text(plugin.configManager.cooldowns.trident.toString())
                     .plugin(plugin)
@@ -201,10 +201,10 @@ class CooldownGUI(private val plugin: UndefinedToggles): UndefinedMenu("ᴄᴏ�
 
                         plugin.configManager.cooldowns.trident = cooldown
 
-                        setBow(this@createInventory)
+                        setTrident(this@createInventory)
 
                     }catch (e: NumberFormatException){
-                        player.sendMessage("<!i><#d92323>$text ɪѕ ɴᴏᴛ ᴀ ɴᴜᴍʙᴇʀ.".toComponent())
+                        player.sendMessage("<reset><#d92323>$text ɪѕ ɴᴏᴛ ᴀ ɴᴜᴍʙᴇʀ.".translateColor())
                     }
 
                     return@onClick listOf(AnvilGUI.ResponseAction.run{
@@ -232,7 +232,7 @@ class CooldownGUI(private val plugin: UndefinedToggles): UndefinedMenu("ᴄᴏ�
             }else if (click.isLeftClick){
 
                 val builder = AnvilGUI.Builder()
-                    .itemLeft(ItemBuilder(item!!.type).setName("<!i><#87f53d>ᴄʀᴏѕѕʙᴏᴡ ᴄᴏᴏʟᴅᴏᴡɴ".toComponent()).build())
+                    .itemLeft(ItemBuilder(item!!.type).setName("<reset><#87f53d>ᴄʀᴏѕѕʙᴏᴡ ᴄᴏᴏʟᴅᴏᴡɴ".translateColor()).build())
                     .title("ᴄʀᴏѕѕʙᴏᴡ ᴄᴏᴏʟᴅᴏᴡɴ")
                     .text(plugin.configManager.cooldowns.crossbow.toString())
                     .plugin(plugin)
@@ -249,7 +249,7 @@ class CooldownGUI(private val plugin: UndefinedToggles): UndefinedMenu("ᴄᴏ�
                         setCrossBow(this@createInventory)
 
                     }catch (e: NumberFormatException){
-                        player.sendMessage("<!i><#d92323>$text ɪѕ ɴᴏᴛ ᴀ ɴᴜᴍʙᴇʀ.".toComponent())
+                        player.sendMessage("<reset><#d92323>$text ɪѕ ɴᴏᴛ ᴀ ɴᴜᴍʙᴇʀ.".translateColor())
                     }
 
                     return@onClick listOf(AnvilGUI.ResponseAction.run{
@@ -280,7 +280,7 @@ class CooldownGUI(private val plugin: UndefinedToggles): UndefinedMenu("ᴄᴏ�
             }else if (click.isLeftClick){
 
                 val builder = AnvilGUI.Builder()
-                    .itemLeft(ItemBuilder(item!!.type).setName("<!i><#8b50f2>ᴀxᴇ ᴄᴏᴏʟᴅᴏᴡɴ".toComponent()).build())
+                    .itemLeft(ItemBuilder(item!!.type).setName("<reset><#8b50f2>ᴀxᴇ ᴄᴏᴏʟᴅᴏᴡɴ".translateColor()).build())
                     .title("ᴀxᴇ ᴄᴏᴏʟᴅᴏᴡɴ")
                     .text(plugin.configManager.cooldowns.crossbow.toString())
                     .plugin(plugin)
@@ -297,7 +297,7 @@ class CooldownGUI(private val plugin: UndefinedToggles): UndefinedMenu("ᴄᴏ�
                         setAxe(this@createInventory)
 
                     }catch (e: NumberFormatException){
-                        player.sendMessage("<!i><#d92323>$text ɪѕ ɴᴏᴛ ᴀ ɴᴜᴍʙᴇʀ.".toComponent())
+                        player.sendMessage("<reset><#d92323>$text ɪѕ ɴᴏᴛ ᴀ ɴᴜᴍʙᴇʀ.".translateColor())
                     }
 
                     return@onClick listOf(AnvilGUI.ResponseAction.run{
@@ -319,18 +319,18 @@ class CooldownGUI(private val plugin: UndefinedToggles): UndefinedMenu("ᴄᴏ�
         val disable = plugin.configManager.cooldowns.enderPearls.isNegative()
 
         val itemBuilder = ItemBuilder(Material.ENDER_PEARL)
-            .setName("<!i><#9710e6>ᴇɴᴅᴇʀ ᴘᴇᴀʀʟ".toComponent())
-            .addLine(" ".toComponent())
+            .setName("<reset><#9710e6>ᴇɴᴅᴇʀ ᴘᴇᴀʀʟ".translateColor())
+            .addLine(" ")
 
         if (disable){
-            itemBuilder.addLine("<!i><#d92323>ɴᴏᴛ ᴍᴏᴅɪꜰɪᴇᴅ".toComponent())
+            itemBuilder.addLine("<reset><#d92323>ɴᴏᴛ ᴍᴏᴅɪꜰɪᴇᴅ".translateColor())
         }else{
-            itemBuilder.addLine("<!i><aqua>ᴄᴏᴏʟᴅᴏᴡɴ <gray>${plugin.configManager.cooldowns.enderPearls} ѕᴇᴄᴏɴᴅѕ".toComponent())
+            itemBuilder.addLine("<reset><aqua>ᴄᴏᴏʟᴅᴏᴡɴ <gray>${plugin.configManager.cooldowns.enderPearls} ѕᴇᴄᴏɴᴅѕ".translateColor())
         }
 
-        itemBuilder.addLine(" ".toComponent())
-        itemBuilder.addLine("<!i><gray>ʟᴇꜰᴛ ᴄʟɪᴄᴋ ᴛᴏ ᴄʜᴀɴɢᴇ ᴄᴏᴏʟᴅᴏᴡɴ".toComponent())
-        itemBuilder.addLine("<!i><gray>ʀɪɢʜᴛ ᴄʟɪᴄᴋ ᴛᴏ ᴛᴏɢɢʟᴇ ᴄᴜѕᴛᴏᴍ ᴄᴏᴏʟᴅᴏᴡɴ".toComponent())
+        itemBuilder.addLine(" ")
+        itemBuilder.addLine("<reset><gray>ʟᴇꜰᴛ ᴄʟɪᴄᴋ ᴛᴏ ᴄʜᴀɴɢᴇ ᴄᴏᴏʟᴅᴏᴡɴ".translateColor())
+        itemBuilder.addLine("<reset><gray>ʀɪɢʜᴛ ᴄʟɪᴄᴋ ᴛᴏ ᴛᴏɢɢʟᴇ ᴄᴜѕᴛᴏᴍ ᴄᴏᴏʟᴅᴏᴡɴ".translateColor())
 
         inventory.setItem(10, itemBuilder.build())
 
@@ -340,18 +340,18 @@ class CooldownGUI(private val plugin: UndefinedToggles): UndefinedMenu("ᴄᴏ�
         val disable = plugin.configManager.cooldowns.fireworks.isNegative()
 
         val itemBuilder = ItemBuilder(Material.FIREWORK_ROCKET)
-            .setName("<!i><#f56b3d>ꜰɪʀᴇᴡᴏʀᴋ".toComponent())
-            .addLine(" ".toComponent())
+            .setName("<reset><#f56b3d>ꜰɪʀᴇᴡᴏʀᴋ".translateColor())
+            .addLine(" ")
 
         if (disable){
-            itemBuilder.addLine("<!i><#d92323>ɴᴏᴛ ᴍᴏᴅɪꜰɪᴇᴅ".toComponent())
+            itemBuilder.addLine("<reset><#d92323>ɴᴏᴛ ᴍᴏᴅɪꜰɪᴇᴅ".translateColor())
         }else{
-            itemBuilder.addLine("<!i><aqua>ᴄᴏᴏʟᴅᴏᴡɴ <gray>${plugin.configManager.cooldowns.fireworks} ѕᴇᴄᴏɴᴅѕ".toComponent())
+            itemBuilder.addLine("<reset><aqua>ᴄᴏᴏʟᴅᴏᴡɴ <gray>${plugin.configManager.cooldowns.fireworks} ѕᴇᴄᴏɴᴅѕ".translateColor())
         }
 
-        itemBuilder.addLine(" ".toComponent())
-        itemBuilder.addLine("<!i><gray>ʟᴇꜰᴛ ᴄʟɪᴄᴋ ᴛᴏ ᴄʜᴀɴɢᴇ ᴄᴏᴏʟᴅᴏᴡɴ".toComponent())
-        itemBuilder.addLine("<!i><gray>ʀɪɢʜᴛ ᴄʟɪᴄᴋ ᴛᴏ ᴛᴏɢɢʟᴇ ᴄᴜѕᴛᴏᴍ ᴄᴏᴏʟᴅᴏᴡɴ".toComponent())
+        itemBuilder.addLine(" ")
+        itemBuilder.addLine("<reset><gray>ʟᴇꜰᴛ ᴄʟɪᴄᴋ ᴛᴏ ᴄʜᴀɴɢᴇ ᴄᴏᴏʟᴅᴏᴡɴ".translateColor())
+        itemBuilder.addLine("<reset><gray>ʀɪɢʜᴛ ᴄʟɪᴄᴋ ᴛᴏ ᴛᴏɢɢʟᴇ ᴄᴜѕᴛᴏᴍ ᴄᴏᴏʟᴅᴏᴡɴ".translateColor())
 
         inventory.setItem(11, itemBuilder.build())
 
@@ -361,18 +361,18 @@ class CooldownGUI(private val plugin: UndefinedToggles): UndefinedMenu("ᴄᴏ�
         val disable = plugin.configManager.cooldowns.bow.isNegative()
 
         val itemBuilder = ItemBuilder(Material.BOW)
-            .setName("<!i><#f5be3d>ʙᴏᴡ".toComponent())
-            .addLine(" ".toComponent())
+            .setName("<reset><#f5be3d>ʙᴏᴡ".translateColor())
+            .addLine(" ")
 
         if (disable){
-            itemBuilder.addLine("<!i><#d92323>ɴᴏᴛ ᴍᴏᴅɪꜰɪᴇᴅ".toComponent())
+            itemBuilder.addLine("<reset><#d92323>ɴᴏᴛ ᴍᴏᴅɪꜰɪᴇᴅ".translateColor())
         }else{
-            itemBuilder.addLine("<!i><aqua>ᴄᴏᴏʟᴅᴏᴡɴ <gray>${plugin.configManager.cooldowns.bow} ѕᴇᴄᴏɴᴅѕ".toComponent())
+            itemBuilder.addLine("<reset><aqua>ᴄᴏᴏʟᴅᴏᴡɴ <gray>${plugin.configManager.cooldowns.bow} ѕᴇᴄᴏɴᴅѕ".translateColor())
         }
 
-        itemBuilder.addLine(" ".toComponent())
-        itemBuilder.addLine("<!i><gray>ʟᴇꜰᴛ ᴄʟɪᴄᴋ ᴛᴏ ᴄʜᴀɴɢᴇ ᴄᴏᴏʟᴅᴏᴡɴ".toComponent())
-        itemBuilder.addLine("<!i><gray>ʀɪɢʜᴛ ᴄʟɪᴄᴋ ᴛᴏ ᴛᴏɢɢʟᴇ ᴄᴜѕᴛᴏᴍ ᴄᴏᴏʟᴅᴏᴡɴ".toComponent())
+        itemBuilder.addLine(" ")
+        itemBuilder.addLine("<reset><gray>ʟᴇꜰᴛ ᴄʟɪᴄᴋ ᴛᴏ ᴄʜᴀɴɢᴇ ᴄᴏᴏʟᴅᴏᴡɴ".translateColor())
+        itemBuilder.addLine("<reset><gray>ʀɪɢʜᴛ ᴄʟɪᴄᴋ ᴛᴏ ᴛᴏɢɢʟᴇ ᴄᴜѕᴛᴏᴍ ᴄᴏᴏʟᴅᴏᴡɴ".translateColor())
 
         inventory.setItem(15, itemBuilder.build())
 
@@ -383,18 +383,18 @@ class CooldownGUI(private val plugin: UndefinedToggles): UndefinedMenu("ᴄᴏ�
         val disable = plugin.configManager.cooldowns.crossbow.isNegative()
 
         val itemBuilder = ItemBuilder(Material.CROSSBOW)
-            .setName("<!i><#87f53d>ᴄʀᴏѕѕʙᴏᴡ".toComponent())
-            .addLine(" ".toComponent())
+            .setName("<reset><#87f53d>ᴄʀᴏѕѕʙᴏᴡ".translateColor())
+            .addLine(" ")
 
         if (disable){
-            itemBuilder.addLine("<!i><#d92323>ɴᴏᴛ ᴍᴏᴅɪꜰɪᴇᴅ".toComponent())
+            itemBuilder.addLine("<reset><#d92323>ɴᴏᴛ ᴍᴏᴅɪꜰɪᴇᴅ".translateColor())
         }else{
-            itemBuilder.addLine("<!i><aqua>ᴄᴏᴏʟᴅᴏᴡɴ <gray>${plugin.configManager.cooldowns.crossbow} ѕᴇᴄᴏɴᴅѕ".toComponent())
+            itemBuilder.addLine("<reset><aqua>ᴄᴏᴏʟᴅᴏᴡɴ <gray>${plugin.configManager.cooldowns.crossbow} ѕᴇᴄᴏɴᴅѕ".translateColor())
         }
 
-        itemBuilder.addLine(" ".toComponent())
-        itemBuilder.addLine("<!i><gray>ʟᴇꜰᴛ ᴄʟɪᴄᴋ ᴛᴏ ᴄʜᴀɴɢᴇ ᴄᴏᴏʟᴅᴏᴡɴ".toComponent())
-        itemBuilder.addLine("<!i><gray>ʀɪɢʜᴛ ᴄʟɪᴄᴋ ᴛᴏ ᴛᴏɢɢʟᴇ ᴄᴜѕᴛᴏᴍ ᴄᴏᴏʟᴅᴏᴡɴ".toComponent())
+        itemBuilder.addLine(" ")
+        itemBuilder.addLine("<reset><gray>ʟᴇꜰᴛ ᴄʟɪᴄᴋ ᴛᴏ ᴄʜᴀɴɢᴇ ᴄᴏᴏʟᴅᴏᴡɴ".translateColor())
+        itemBuilder.addLine("<reset><gray>ʀɪɢʜᴛ ᴄʟɪᴄᴋ ᴛᴏ ᴛᴏɢɢʟᴇ ᴄᴜѕᴛᴏᴍ ᴄᴏᴏʟᴅᴏᴡɴ".translateColor())
 
         inventory.setItem(14, itemBuilder.build())
 
@@ -405,18 +405,18 @@ class CooldownGUI(private val plugin: UndefinedToggles): UndefinedMenu("ᴄᴏ�
         val disable = plugin.configManager.cooldowns.trident.isNegative()
 
         val itemBuilder = ItemBuilder(Material.TRIDENT)
-            .setName("<!i><#3da5f5>ᴛʀɪᴅᴇɴᴛ".toComponent())
-            .addLine(" ".toComponent())
+            .setName("<reset><#3da5f5>ᴛʀɪᴅᴇɴᴛ".translateColor())
+            .addLine(" ")
 
         if (disable){
-            itemBuilder.addLine("<!i><#d92323>ɴᴏᴛ ᴍᴏᴅɪꜰɪᴇᴅ".toComponent())
+            itemBuilder.addLine("<reset><#d92323>ɴᴏᴛ ᴍᴏᴅɪꜰɪᴇᴅ".translateColor())
         }else{
-            itemBuilder.addLine("<!i><aqua>ᴄᴏᴏʟᴅᴏᴡɴ <gray>${plugin.configManager.cooldowns.trident} ѕᴇᴄᴏɴᴅѕ".toComponent())
+            itemBuilder.addLine("<reset><aqua>ᴄᴏᴏʟᴅᴏᴡɴ <gray>${plugin.configManager.cooldowns.trident} ѕᴇᴄᴏɴᴅѕ".translateColor())
         }
 
-        itemBuilder.addLine(" ".toComponent())
-        itemBuilder.addLine("<!i><gray>ʟᴇꜰᴛ ᴄʟɪᴄᴋ ᴛᴏ ᴄʜᴀɴɢᴇ ᴄᴏᴏʟᴅᴏᴡɴ".toComponent())
-        itemBuilder.addLine("<!i><gray>ʀɪɢʜᴛ ᴄʟɪᴄᴋ ᴛᴏ ᴛᴏɢɢʟᴇ ᴄᴜѕᴛᴏᴍ ᴄᴏᴏʟᴅᴏᴡɴ".toComponent())
+        itemBuilder.addLine(" ")
+        itemBuilder.addLine("<reset><gray>ʟᴇꜰᴛ ᴄʟɪᴄᴋ ᴛᴏ ᴄʜᴀɴɢᴇ ᴄᴏᴏʟᴅᴏᴡɴ".translateColor())
+        itemBuilder.addLine("<reset><gray>ʀɪɢʜᴛ ᴄʟɪᴄᴋ ᴛᴏ ᴛᴏɢɢʟᴇ ᴄᴜѕᴛᴏᴍ ᴄᴏᴏʟᴅᴏᴡɴ".translateColor())
 
         inventory.setItem(16, itemBuilder.build())
 
@@ -427,18 +427,18 @@ class CooldownGUI(private val plugin: UndefinedToggles): UndefinedMenu("ᴄᴏ�
         val disable = plugin.configManager.cooldowns.axe.isNegative()
 
         val itemBuilder = ItemBuilder(Material.DIAMOND_AXE)
-            .setName("<!i><#8b50f2>ᴀxᴇ".toComponent())
-            .addLine(" ".toComponent())
+            .setName("<reset><#8b50f2>ᴀxᴇ".translateColor())
+            .addLine(" ")
 
         if (disable){
-            itemBuilder.addLine("<!i><#d92323>ɴᴏᴛ ᴍᴏᴅɪꜰɪᴇᴅ".toComponent())
+            itemBuilder.addLine("<reset><#d92323>ɴᴏᴛ ᴍᴏᴅɪꜰɪᴇᴅ".translateColor())
         }else{
-            itemBuilder.addLine("<!i><aqua>ᴄᴏᴏʟᴅᴏᴡɴ <gray>${plugin.configManager.cooldowns.axe} ѕᴇᴄᴏɴᴅѕ".toComponent())
+            itemBuilder.addLine("<reset><aqua>ᴄᴏᴏʟᴅᴏᴡɴ <gray>${plugin.configManager.cooldowns.axe} ѕᴇᴄᴏɴᴅѕ".translateColor())
         }
 
-        itemBuilder.addLine(" ".toComponent())
-        itemBuilder.addLine("<!i><gray>ʟᴇꜰᴛ ᴄʟɪᴄᴋ ᴛᴏ ᴄʜᴀɴɢᴇ ᴄᴏᴏʟᴅᴏᴡɴ".toComponent())
-        itemBuilder.addLine("<!i><gray>ʀɪɢʜᴛ ᴄʟɪᴄᴋ ᴛᴏ ᴛᴏɢɢʟᴇ ᴄᴜѕᴛᴏᴍ ᴄᴏᴏʟᴅᴏᴡɴ".toComponent())
+        itemBuilder.addLine(" ")
+        itemBuilder.addLine("<reset><gray>ʟᴇꜰᴛ ᴄʟɪᴄᴋ ᴛᴏ ᴄʜᴀɴɢᴇ ᴄᴏᴏʟᴅᴏᴡɴ".translateColor())
+        itemBuilder.addLine("<reset><gray>ʀɪɢʜᴛ ᴄʟɪᴄᴋ ᴛᴏ ᴛᴏɢɢʟᴇ ᴄᴜѕᴛᴏᴍ ᴄᴏᴏʟᴅᴏᴡɴ".translateColor())
 
         inventory.setItem(12, itemBuilder.build())
 

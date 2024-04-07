@@ -28,7 +28,7 @@
  import net.minecraft.server.packs.repository.PackRepository;
  import net.minecraft.server.packs.repository.ServerPacksSource;
  import net.minecraft.util.Mth;
-@@ -52,239 +54,388 @@
+@@ -52,239 +54,377 @@
  import net.minecraft.world.level.levelgen.WorldOptions;
  import net.minecraft.world.level.levelgen.presets.WorldPresets;
  import net.minecraft.world.level.storage.LevelDataAndDimensions;
@@ -104,17 +104,6 @@
 +            */ // CraftBukkit end
 +
 +        try {
-+            // Paper start
-+            if (Boolean.getBoolean("Paper.isRunDev")) {
-+                net.minecraft.server.packs.VanillaPackResourcesBuilder.developmentConfig = builder -> {
-+                    try {
-+                        builder.pushAssetPath(net.minecraft.server.packs.PackType.SERVER_DATA, net.minecraft.server.packs.VanillaPackResourcesBuilder.safeGetPath(java.util.Objects.requireNonNull(Main.class.getResource("/data/.paperassetsroot"), "Missing required .paperassetsroot file").toURI()).getParent());
-+                    } catch (java.net.URISyntaxException | IOException ex) {
-+                        throw new RuntimeException(ex);
-+                    }
-+                };
-+            }
-+            // Paper end
 +
 +            Path path = (Path) optionset.valueOf("pidFile"); // CraftBukkit
  
@@ -496,17 +485,17 @@
 +        WorldLoader.PackConfig worldloader_d = new WorldLoader.PackConfig(dataPackManager, worlddataconfiguration, safeMode, flag1);
 +
 +        return new WorldLoader.InitConfig(worldloader_d, Commands.CommandSelection.DEDICATED, serverPropertiesHandler.functionPermissionLevel);
-     }
- 
++    }
++
 +    // Paper start - fix and optimise world upgrading
 +    public static void convertWorldButItWorks(net.minecraft.resources.ResourceKey<net.minecraft.world.level.dimension.LevelStem> dimensionType, net.minecraft.world.level.storage.LevelStorageSource.LevelStorageAccess worldSession,
 +                                              DataFixer dataFixer, Optional<net.minecraft.resources.ResourceKey<com.mojang.serialization.Codec<? extends net.minecraft.world.level.chunk.ChunkGenerator>>> generatorKey, boolean removeCaches) {
 +        int threads = Runtime.getRuntime().availableProcessors() * 3 / 8;
 +        final io.papermc.paper.world.ThreadedWorldUpgrader worldUpgrader = new io.papermc.paper.world.ThreadedWorldUpgrader(dimensionType, worldSession.getLevelId(), worldSession.levelDirectory.path().toFile(), threads, dataFixer, generatorKey, removeCaches);
 +        worldUpgrader.convert();
-+    }
+     }
 +    // Paper end - fix and optimise world upgrading
-+
+ 
      public static void forceUpgrade(LevelStorageSource.LevelStorageAccess session, DataFixer dataFixer, boolean eraseCache, BooleanSupplier continueCheck, Registry<LevelStem> dimensionOptionsRegistry) {
 -        LOGGER.info("Forcing world upgrade!");
 -        WorldUpgrader worldUpgrader = new WorldUpgrader(session, dataFixer, dimensionOptionsRegistry, eraseCache);

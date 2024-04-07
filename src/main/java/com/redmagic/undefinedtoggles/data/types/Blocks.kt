@@ -1,9 +1,12 @@
 package com.redmagic.undefinedtoggles.data.types
 
-import com.mojang.datafixers.kinds.IdF.Mu
+import com.redmagic.undefinedapi.builders.ItemBuilder
+import com.redmagic.undefinedapi.extension.string.toSmallText
+import com.redmagic.undefinedapi.extension.string.translateColor
 import com.redmagic.undefinedtoggles.UndefinedToggles
 import org.bukkit.Material
 import org.bukkit.entity.EntityType
+import org.bukkit.inventory.ItemStack
 
 class Blocks(private val plugin: UndefinedToggles) {
 
@@ -46,5 +49,23 @@ class Blocks(private val plugin: UndefinedToggles) {
         spawning.save()
     }
 
-    
+}
+
+
+fun MutableList<BlockCommand>.getList() = map {
+    ItemBuilder(Material.OAK_SIGN)
+        .setName("<reset><#34ebc0>${it.command.toSmallText()}".translateColor())
+        .addLine(" ")
+        .addLine("<gray>ʟᴇꜰᴛ ᴄʟɪᴄᴋ ᴛᴏ ᴇᴅɪᴛ / ᴠɪᴇᴡ ʙʟᴏᴄᴋᴇᴅ ᴄᴏᴍᴍᴀɴᴅ".translateColor())
+        .addLine("<gray>ʀɪɢʜᴛ ᴄʟɪᴄᴋ ᴛᴏ ʀᴇᴍᴏᴠᴇ ʙʟᴏᴄᴋᴇᴅ ᴄᴏᴍᴍᴀɴᴅ".translateColor())
+        .setLocalizedName(it.command)
+        .build()
+}.toMutableList()
+
+fun MutableList<BlockCommand>.getFromName(name: String): BlockCommand? {
+    forEach(){
+        if (it.command.equals(name))
+            return it
+    }
+    return null
 }

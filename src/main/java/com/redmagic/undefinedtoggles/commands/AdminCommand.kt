@@ -6,17 +6,18 @@ import com.redmagic.undefinedapi.command.UndefinedCommand
 import com.redmagic.undefinedapi.menu.MenuManager.openMenu
 import com.redmagic.undefinedtoggles.UndefinedToggles
 import com.redmagic.undefinedtoggles.gui.admin.AdminGUI
+import org.bukkit.command.Command
+import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 
-class AdminCommand(val plugin: UndefinedToggles): UndefinedCommand("admintoggles", permission = "undefined.toggles.admin.command", description = "The admin gui for the toggles", commandType = CommandType.PLAYER, aliases = listOf("at")) {
-
-    override fun execute(sender: CommandSender, args: Array<out String>) {
-
-        val player = sender as Player
-        player.openMenu(AdminGUI(plugin))
-
+class AdminCommand(val plugin: UndefinedToggles): CommandExecutor {
+    override fun onCommand(p0: CommandSender, p1: Command, p2: String, p3: Array<out String>): Boolean {
+        if (p0 is Player) {
+            val player = p0 as Player
+            player.openMenu(AdminGUI(plugin))
+        }
+        return true
     }
 
-    override fun tabComplete(sender: CommandSender, args: Array<out String>): CommandTabUtil = CommandTabUtil(listOf(), 0)
 }

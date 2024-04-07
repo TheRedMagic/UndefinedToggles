@@ -503,7 +503,7 @@
 [DEBUG] Patching: net/minecraft/server/Main.java
 [DEBUG]  Hunk 0: EXACT: @@ -16,17 +16,18 @@
 [DEBUG]  Hunk 1: EXACT: @@ -36,6 +37,7 @@
-[DEBUG]  Hunk 2: EXACT: @@ -52,239 +54,388 @@
+[DEBUG]  Hunk 2: EXACT: @@ -52,239 +54,377 @@
 [DEBUG] Patching: net/minecraft/server/MinecraftServer.java
 [DEBUG]  Hunk 0: EXACT: @@ -3,6 +3,9 @@
 [DEBUG]  Hunk 1: EXACT: @@ -14,24 +17,28 @@
@@ -1046,6 +1046,8 @@
 [DEBUG]  Hunk 3: EXACT: @@ -32,16 +45,122 @@
 [DEBUG] Patching: net/minecraft/server/packs/PathPackResources.java
 [DEBUG]  Hunk 0: EXACT: @@ -108,6 +108,12 @@
+[DEBUG] Patching: net/minecraft/server/packs/VanillaPackResourcesBuilder.java
+[DEBUG]  Hunk 0: EXACT: @@ -141,6 +141,15 @@
 [DEBUG] Patching: net/minecraft/server/packs/repository/ServerPacksSource.java
 [DEBUG]  Hunk 0: EXACT: @@ -32,7 +32,7 @@
 [DEBUG] Patching: net/minecraft/server/players/BanListEntry.java
@@ -5960,14 +5962,14 @@
 [DEBUG]  Hunk 4: EXACT: @@ -101,6 +116,7 @@
 [DEBUG]  Hunk 5: EXACT: @@ -117,6 +133,11 @@
 Patch Summary:
- Un-changed files: 2964
+ Un-changed files: 2963
  Added files:      0
- Changed files:    803
+ Changed files:    804
  Removed files:    0
  Missing files:    0
 
  Failed matches:   0
- Exact matches:    5158
+ Exact matches:    5159
  Access matches:   0
  Offset matches:   0
  Fuzzy matches:    0

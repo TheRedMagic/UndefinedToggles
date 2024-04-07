@@ -6,6 +6,7 @@ import com.redmagic.undefinedapi.scheduler.repeatingTask
 import com.redmagic.undefinedtoggles.commands.AdminCommand
 import com.redmagic.undefinedtoggles.data.ConfigManager
 import com.redmagic.undefinedtoggles.gui.GUIManager
+import org.bukkit.Material
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.plugin.java.JavaPlugin
 import java.io.File
@@ -20,9 +21,18 @@ class UndefinedToggles : JavaPlugin() {
 
     lateinit var guiManager: GUIManager
 
+
+    companion object{
+        lateinit var plugin: UndefinedToggles
+    }
+
     override fun onEnable() {
 
         UndefinedAPI(this)
+
+        plugin = this
+
+        getCommand("admintoggles")!!.setExecutor(AdminCommand(this))
 
         loadConfig()
 
@@ -33,6 +43,7 @@ class UndefinedToggles : JavaPlugin() {
         commands()
 
         startAutoSaving()
+
 
     }
 

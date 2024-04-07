@@ -24,8 +24,8 @@ reduction:
 
 blocked:
   max-amount:
-    totems: -1
-    potion: -1
+    TOTEM_OF_UNDYING: -1
+    POTION: -1
   spawning:
     mobs:
     item:

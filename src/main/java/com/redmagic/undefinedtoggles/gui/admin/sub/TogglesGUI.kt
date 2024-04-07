@@ -1,17 +1,14 @@
 package com.redmagic.undefinedtoggles.gui.admin.sub
 
 import com.redmagic.undefinedapi.builders.ItemBuilder
-import com.redmagic.undefinedapi.extension.string.toComponent
+import com.redmagic.undefinedapi.extension.string.translateColor
 import com.redmagic.undefinedapi.menu.MenuSize
 import com.redmagic.undefinedapi.menu.normal.UndefinedMenu
 import com.redmagic.undefinedapi.menu.normal.button.Button
 import com.redmagic.undefinedapi.menu.normal.button.MenuButton
 import com.redmagic.undefinedtoggles.UndefinedToggles
-import net.kyori.adventure.text.Component
 import org.bukkit.Material
-import org.bukkit.entity.Item
 import org.bukkit.inventory.Inventory
-import org.bukkit.inventory.ItemFlag
 
 class TogglesGUI(private val plugin: UndefinedToggles): UndefinedMenu("ᴛᴏɢɢʟᴇѕ", MenuSize.MINI) {
 
@@ -20,9 +17,9 @@ class TogglesGUI(private val plugin: UndefinedToggles): UndefinedMenu("ᴛᴏɢ�
         fillEmpty(ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName(" ").build())
 
         setItem(18, ItemBuilder(Material.RED_STAINED_GLASS_PANE)
-            .setName("<!i><#d92323>ʙᴀᴄᴋ ᴛᴏ ᴀᴅᴍɪɴ ᴍᴇɴᴜ".toComponent())
-            .addLine(" ".toComponent())
-            .addLine("<!i><gray>ᴄʟɪᴄᴋ ᴛᴏ ɢᴏ ʙᴀᴄᴋ ᴛᴏ ᴀᴅᴍɪɴ ᴍᴇɴᴜ".toComponent()).build())
+            .setName("<reset><#d92323>ʙᴀᴄᴋ ᴛᴏ ᴀᴅᴍɪɴ ᴍᴇɴᴜ".translateColor())
+            .addLine(" ")
+            .addLine("<reset><gray>ᴄʟɪᴄᴋ ᴛᴏ ɢᴏ ʙᴀᴄᴋ ᴛᴏ ᴀᴅᴍɪɴ ᴍᴇɴᴜ".translateColor()).build())
 
         addButton(MenuButton(18, plugin.guiManager.adminGUI){})
 
@@ -60,77 +57,77 @@ class TogglesGUI(private val plugin: UndefinedToggles): UndefinedMenu("ᴛᴏɢ�
 
     }
 
-    private fun toggleMessage(boolean: Boolean): Component = if (boolean){ "<!i><#32e67d>ʙʟᴏᴄᴋᴇᴅ".toComponent() } else "<!i><#d92323>ɴᴏᴛ ᴍᴏᴅɪꜰɪᴇᴅ".toComponent()
+    private fun toggleMessage(boolean: Boolean): String = if (boolean){ "<reset><#32e67d>ʙʟᴏᴄᴋᴇᴅ".translateColor() } else "<reset><#d92323>ɴᴏᴛ ᴍᴏᴅɪꜰɪᴇᴅ".translateColor()
 
     private fun toggleMaterial(boolean: Boolean): Material = if (boolean){ Material.LIME_CONCRETE }else Material.RED_CONCRETE
 
     private fun setArmorTrimsCopyingItem(inventory: Inventory){
         inventory.setItem(10, ItemBuilder(toggleMaterial(plugin.configManager.toggles.armorTrimsCopying))
-            .setName("<!i><#11ed61>ᴄᴏᴘʏɪɴɢ ᴀʀᴍᴏʀ ᴛʀɪᴍѕ".toComponent())
+            .setName("<reset><#11ed61>ᴄᴏᴘʏɪɴɢ ᴀʀᴍᴏʀ ᴛʀɪᴍѕ".translateColor())
             .setLore(mutableListOf())
-            .addLine(" ".toComponent())
-            .addLine("<gray>ʙʟᴏᴄᴋ ᴄᴏᴘʏɪɴɢ ᴀʀᴍᴏʀ ᴛʀɪᴍѕ ɪɴ ᴄʀᴀꜰᴛɪɴɢ ᴛᴀʙʟᴇ".toComponent())
-            .addLine(" ".toComponent())
+            .addLine(" ")
+            .addLine("<gray>ʙʟᴏᴄᴋ ᴄᴏᴘʏɪɴɢ ᴀʀᴍᴏʀ ᴛʀɪᴍѕ ɪɴ ᴄʀᴀꜰᴛɪɴɢ ᴛᴀʙʟᴇ".translateColor())
+            .addLine(" ")
             .addLine(toggleMessage(plugin.configManager.toggles.armorTrimsCopying))
-            .addLine(" ".toComponent())
-            .addLine("<!i><gray>ᴄʟɪᴄᴋ ᴛᴏ ᴛᴏɢɢʟᴇ".toComponent()).build())
+            .addLine(" ")
+            .addLine("<reset><gray>ᴄʟɪᴄᴋ ᴛᴏ ᴛᴏɢɢʟᴇ".translateColor()).build())
     }
 
     private fun setUpgradeTemplateItem(inventory: Inventory){
         inventory.setItem(11, ItemBuilder(toggleMaterial(plugin.configManager.toggles.upgradeTemplateCopying))
-            .setName("<!i><#e86925>ᴄᴏᴘʏɪɴɢ ᴜᴘɢʀᴀᴅᴇ ᴛᴇᴍᴘʟᴀᴛᴇ".toComponent())
+            .setName("<reset><#e86925>ᴄᴏᴘʏɪɴɢ ᴜᴘɢʀᴀᴅᴇ ᴛᴇᴍᴘʟᴀᴛᴇ".translateColor())
             .setLore(mutableListOf())
-            .addLine(" ".toComponent())
-            .addLine("<gray>ʙʟᴏᴄᴋ ᴄᴏᴘʏɪɴɢ ᴏꜰ ᴜᴘɢʀᴀᴅᴇ ᴛᴇᴍᴘʟᴀᴛᴇ ɪɴ ᴄʀᴀꜰᴛɪɴɢ ᴛᴀʙʟᴇ".toComponent())
-            .addLine(" ".toComponent())
+            .addLine(" ")
+            .addLine("<gray>ʙʟᴏᴄᴋ ᴄᴏᴘʏɪɴɢ ᴏꜰ ᴜᴘɢʀᴀᴅᴇ ᴛᴇᴍᴘʟᴀᴛᴇ ɪɴ ᴄʀᴀꜰᴛɪɴɢ ᴛᴀʙʟᴇ".translateColor())
+            .addLine(" ")
             .addLine(toggleMessage(plugin.configManager.toggles.upgradeTemplateCopying))
-            .addLine(" ".toComponent())
-            .addLine("<!i><gray>ᴄʟɪᴄᴋ ᴛᴏ ᴛᴏɢɢʟᴇ".toComponent()).build())
+            .addLine(" ")
+            .addLine("<reset><gray>ᴄʟɪᴄᴋ ᴛᴏ ᴛᴏɢɢʟᴇ".translateColor()).build())
     }
     private fun setVillagerChangeWork(inventory: Inventory){
         inventory.setItem(12, ItemBuilder(toggleMaterial(plugin.configManager.toggles.villagerChangeTrade))
-            .setName("<!i><#42f551>ᴠɪʟʟᴀɢᴇʀ ᴄʜᴀɴɢɪɴɢ ᴡᴏʀᴋ".toComponent())
+            .setName("<reset><#42f551>ᴠɪʟʟᴀɢᴇʀ ᴄʜᴀɴɢɪɴɢ ᴡᴏʀᴋ".translateColor())
             .setLore(mutableListOf())
-            .addLine(" ".toComponent())
-            .addLine("<gray>ʙʟᴏᴄᴋ ᴠɪʟʟᴀɢᴇʀѕ ꜰʀᴏᴍ ᴄʜᴀɴɢɪɴɢ ᴡᴏʀᴋ".toComponent())
-            .addLine(" ".toComponent())
+            .addLine(" ")
+            .addLine("<gray>ʙʟᴏᴄᴋ ᴠɪʟʟᴀɢᴇʀѕ ꜰʀᴏᴍ ᴄʜᴀɴɢɪɴɢ ᴡᴏʀᴋ".translateColor())
+            .addLine(" ")
             .addLine(toggleMessage(plugin.configManager.toggles.villagerChangeTrade))
-            .addLine(" ".toComponent())
-            .addLine("<!i><gray>ᴄʟɪᴄᴋ ᴛᴏ ᴛᴏɢɢʟᴇ".toComponent()).build())
+            .addLine(" ")
+            .addLine("<reset><gray>ᴄʟɪᴄᴋ ᴛᴏ ᴛᴏɢɢʟᴇ".translateColor()).build())
     }
 
     private fun setTnTBlockDamage(inventory: Inventory){
         inventory.setItem(14, ItemBuilder(toggleMaterial(plugin.configManager.toggles.tntBlockDamage))
-            .setName("<!i><#e64229>ᴛɴᴛ ʙʟᴏᴄᴋ ᴅᴀᴍᴀɢᴇ".toComponent())
+            .setName("<reset><#e64229>ᴛɴᴛ ʙʟᴏᴄᴋ ᴅᴀᴍᴀɢᴇ".translateColor())
             .setLore(mutableListOf())
-            .addLine(" ".toComponent())
-            .addLine("<gray>ʙʟᴏᴄᴋ ᴛɴᴛ ꜰʀᴏᴍ ᴅᴏɪɴɢ ʙʟᴏᴄᴋ ᴅᴀᴍᴀɢᴇ".toComponent())
-            .addLine(" ".toComponent())
+            .addLine(" ")
+            .addLine("<gray>ʙʟᴏᴄᴋ ᴛɴᴛ ꜰʀᴏᴍ ᴅᴏɪɴɢ ʙʟᴏᴄᴋ ᴅᴀᴍᴀɢᴇ".translateColor())
+            .addLine(" ")
             .addLine(toggleMessage(plugin.configManager.toggles.tntBlockDamage))
-            .addLine(" ".toComponent())
-            .addLine("<!i><gray>ᴄʟɪᴄᴋ ᴛᴏ ᴛᴏɢɢʟᴇ".toComponent()).build())
+            .addLine(" ")
+            .addLine("<reset><gray>ᴄʟɪᴄᴋ ᴛᴏ ᴛᴏɢɢʟᴇ".translateColor()).build())
     }
 
     private fun setElytra(inventory: Inventory){
         inventory.setItem(15, ItemBuilder(toggleMaterial(plugin.configManager.toggles.allowElytra))
-            .setName("<!i><#791df2>ᴇʟʏᴛʀᴀ".toComponent())
+            .setName("<reset><#791df2>ᴇʟʏᴛʀᴀ".translateColor())
             .setLore(mutableListOf())
-            .addLine(" ".toComponent())
-            .addLine("<gray>ʙʟᴏᴄᴋ ᴛʜᴇ ᴜѕᴇ ᴏꜰ ᴇʟʏᴛʀᴀѕ".toComponent())
-            .addLine(" ".toComponent())
+            .addLine(" ")
+            .addLine("<gray>ʙʟᴏᴄᴋ ᴛʜᴇ ᴜѕᴇ ᴏꜰ ᴇʟʏᴛʀᴀѕ".translateColor())
+            .addLine(" ")
             .addLine(toggleMessage(plugin.configManager.toggles.allowElytra))
-            .addLine(" ".toComponent())
-            .addLine("<!i><gray>ᴄʟɪᴄᴋ ᴛᴏ ᴛᴏɢɢʟᴇ".toComponent()).build())
+            .addLine(" ")
+            .addLine("<reset><gray>ᴄʟɪᴄᴋ ᴛᴏ ᴛᴏɢɢʟᴇ".translateColor()).build())
     }
     private fun setElytraFireWork(inventory: Inventory){
         inventory.setItem(16, ItemBuilder(toggleMaterial(plugin.configManager.toggles.allowFireworksWithElytra))
-            .setName("<!i><#1576ed>ꜰɪʀᴇᴡᴏʀᴋ ʙᴏᴏѕᴛ".toComponent())
+            .setName("<reset><#1576ed>ꜰɪʀᴇᴡᴏʀᴋ ʙᴏᴏѕᴛ".translateColor())
             .setLore(mutableListOf())
-            .addLine(" ".toComponent())
-            .addLine("<gray>ʙʟᴏᴄᴋ ꜰɪʀᴇᴡᴏʀᴋ ꜰʀᴏᴍ ʙᴏᴏѕᴛɪɴɢ ᴡɪᴛʜ ᴇʟʏᴛʀᴀ".toComponent())
-            .addLine(" ".toComponent())
+            .addLine(" ")
+            .addLine("<gray>ʙʟᴏᴄᴋ ꜰɪʀᴇᴡᴏʀᴋ ꜰʀᴏᴍ ʙᴏᴏѕᴛɪɴɢ ᴡɪᴛʜ ᴇʟʏᴛʀᴀ".translateColor())
+            .addLine(" ")
             .addLine(toggleMessage(plugin.configManager.toggles.allowFireworksWithElytra))
-            .addLine(" ".toComponent())
-            .addLine("<!i><gray>ᴄʟɪᴄᴋ ᴛᴏ ᴛᴏɢɢʟᴇ".toComponent()).build())
+            .addLine(" ")
+            .addLine("<reset><gray>ᴄʟɪᴄᴋ ᴛᴏ ᴛᴏɢɢʟᴇ".translateColor()).build())
     }
 }

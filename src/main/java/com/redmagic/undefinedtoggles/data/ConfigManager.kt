@@ -35,8 +35,6 @@ class ConfigManager(plugin: UndefinedToggles) {
     )
 
     val maxAmount = Amount(
-        plugin.configuration.getInt("blocked.max-amount.totems"),
-        plugin.configuration.getInt("blocked.max-amount.potion"),
         plugin
     )
 

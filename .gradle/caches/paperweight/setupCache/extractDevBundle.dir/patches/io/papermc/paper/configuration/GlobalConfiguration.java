@@ -172,6 +172,8 @@ public class GlobalConfiguration extends ConfigurationPart {
     public UnsupportedSettings unsupportedSettings;
 
     public class UnsupportedSettings extends ConfigurationPart {
+        @Comment("This setting controls if the broken behavior of disarmed tripwires not breaking should be allowed. This also allows for dupes")
+        public boolean allowTripwireDisarmingExploits = false;
         @Comment("This setting allows for exploits related to end portals, for example sand duping")
         public boolean allowUnsafeEndPortalTeleportation = false;
         @Comment("This setting controls if players should be able to break bedrock, end portals and other intended to be permanent blocks.")
