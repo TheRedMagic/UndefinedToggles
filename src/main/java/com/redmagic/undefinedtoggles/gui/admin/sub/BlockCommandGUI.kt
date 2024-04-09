@@ -10,12 +10,10 @@ import com.redmagic.undefinedapi.menu.normal.button.Button
 import com.redmagic.undefinedapi.menu.normal.button.MenuButton
 import com.redmagic.undefinedtoggles.UndefinedToggles
 import com.redmagic.undefinedtoggles.data.types.BlockCommand
-import com.redmagic.undefinedtoggles.data.types.getFromName
 import com.redmagic.undefinedtoggles.data.types.getList
-import com.redmagic.undefinedtoggles.gui.admin.sub.page.BlockedCommandPageGUI
+import com.redmagic.undefinedtoggles.gui.admin.sub.page.command.BlockedCommandPageGUI
 import net.wesjd.anvilgui.AnvilGUI
 import org.bukkit.Material
-import org.bukkit.entity.Item
 import org.bukkit.inventory.Inventory
 
 class BlockCommandGUI(private val plugin: UndefinedToggles, private val blockCommand: BlockCommand): UndefinedMenu("ʙʟᴏᴄᴋᴇᴅ ᴄᴏᴍᴍᴀɴᴅѕ : ${blockCommand.command.toSmallText()}", MenuSize.MINI) {
@@ -56,9 +54,8 @@ class BlockCommandGUI(private val plugin: UndefinedToggles, private val blockCom
                     val text = clickEvent.text
 
                     if (text.contains(" ")){
-                        return@onClick listOf(AnvilGUI.ResponseAction.close())
-
                         player.sendMessage("<#d92323>ɴᴏᴛ ᴀɴ ᴘᴇʀᴍɪѕѕɪᴏɴ ɴᴏᴅᴇ".translateColor())
+                        return@onClick listOf(AnvilGUI.ResponseAction.close())
                     }
 
                     blockCommand.permission = text

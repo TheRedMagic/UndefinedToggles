@@ -68,7 +68,7 @@ class ReductionGUI(private val plugin: UndefinedToggles): UndefinedMenu("ʀᴇ�
                 builder.open(player)
 
             }else if (click.isRightClick){
-                plugin.configManager.reduction.crystals = if (plugin.configManager.reduction.crystals == 0.0) 100.0 else 0.0
+                plugin.configManager.reduction.crystals = if (plugin.configManager.reduction.crystals <= 0.0) 100.0 else 0.0
                 setCrystals(this@createInventory)
             }
         })
@@ -106,7 +106,7 @@ class ReductionGUI(private val plugin: UndefinedToggles): UndefinedMenu("ʀᴇ�
                 builder.open(player)
 
             }else if (click.isRightClick){
-                plugin.configManager.reduction.anchors = if (plugin.configManager.reduction.anchors == 0.0) 100.0 else 0.0
+                plugin.configManager.reduction.anchors = if (plugin.configManager.reduction.anchors <= 0.0) 100.0 else 0.0
                 setAnchors(this@createInventory)
             }
         })
@@ -144,7 +144,7 @@ class ReductionGUI(private val plugin: UndefinedToggles): UndefinedMenu("ʀᴇ�
                 builder.open(player)
 
             }else if (click.isRightClick){
-                plugin.configManager.reduction.bedExplosions = if (plugin.configManager.reduction.bedExplosions == 0.0) 100.0 else 0.0
+                plugin.configManager.reduction.bedExplosions = if (plugin.configManager.reduction.bedExplosions <= 0.0) 100.0 else 0.0
                 setBedExplosions(this@createInventory)
             }
         })
@@ -182,7 +182,7 @@ class ReductionGUI(private val plugin: UndefinedToggles): UndefinedMenu("ʀᴇ�
                 builder.open(player)
 
             }else if (click.isRightClick){
-                plugin.configManager.reduction.tntMinecart = if (plugin.configManager.reduction.tntMinecart == 0.0) 100.0 else 0.0
+                plugin.configManager.reduction.tntMinecart = if (plugin.configManager.reduction.tntMinecart <= 0.0) 100.0 else 0.0
                 setTntMinecart(this@createInventory)
             }
         })
@@ -220,7 +220,7 @@ class ReductionGUI(private val plugin: UndefinedToggles): UndefinedMenu("ʀᴇ�
                 builder.open(player)
 
             }else if (click.isRightClick){
-                plugin.configManager.reduction.tnt = if (plugin.configManager.reduction.tnt == 0.0) 100.0 else 0.0
+                plugin.configManager.reduction.tnt = if (plugin.configManager.reduction.tnt <= 0.0) 100.0 else 0.0
                 setTnt(this@createInventory)
             }
         })
@@ -258,7 +258,7 @@ class ReductionGUI(private val plugin: UndefinedToggles): UndefinedMenu("ʀᴇ�
                 builder.open(player)
 
             }else if (click.isRightClick){
-                plugin.configManager.reduction.fallDamage = if (plugin.configManager.reduction.fallDamage == 0.0) 100.0 else 0.0
+                plugin.configManager.reduction.fallDamage = if (plugin.configManager.reduction.fallDamage <= 0.0) 100.0 else 0.0
                 setFallDamage(this@createInventory)
             }
         })

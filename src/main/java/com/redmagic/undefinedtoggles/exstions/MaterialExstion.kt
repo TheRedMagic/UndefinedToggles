@@ -17,7 +17,7 @@ fun Material.getSpawnEggItems(): MutableList<ItemStack> {
                 val entityType = EntityType.valueOf(it.name.removeSuffix("_SPAWN_EGG"))
                 if (!UndefinedToggles.plugin.configManager.blocks.spawning.blockedMobs.contains(entityType)) {
                     ItemBuilder(it)
-                        .setName("<reset><#42f5bf>${entityType.name.replace("_", " ").decapitalize()}".translateColor())
+                        .setName("<reset><#42f5bf>${entityType.name.replace("_", " ").toSmallText()}".translateColor())
                         .addLine(" ")
                         .addLine("<reset><gray>ᴄʟɪᴄᴋ ᴛᴏ ᴀᴅᴅ ᴛᴏ ʙʟᴏᴄᴋ ᴇɴᴛɪᴛʏѕ".translateColor())
                         .setLocalizedName(entityType.name)
@@ -31,10 +31,8 @@ fun Material.getSpawnEggItems(): MutableList<ItemStack> {
 }
 
 fun Material.getItemItems(): MutableList<ItemStack> {
-
     val mutableList: MutableList<ItemStack> = mutableListOf()
     Material.entries.forEach(){
-
         if (!UndefinedToggles.plugin.configManager.blocks.spawning.blockedItems.contains(it)){
             if (it.isItem){
                 mutableList.add(ItemBuilder(it)
@@ -43,11 +41,23 @@ fun Material.getItemItems(): MutableList<ItemStack> {
                     .setLocalizedName(it.name)
                     .addLine("<reset><gray>ᴄʟɪᴄᴋ ᴛᴏ ᴀᴅᴅ ᴛᴏ ʙʟᴏᴄᴋ ɪᴛᴇᴍѕ".translateColor()).build())
             }
-
         }
-
     }
-
     return mutableList
+}
 
+fun Material.getMaxAmount(): MutableList<ItemStack> {
+    val mutableList: MutableList<ItemStack> = mutableListOf()
+    Material.entries.forEach(){
+        if (!UndefinedToggles.plugin.configManager.blocks.spawning.blockedItems.contains(it)){
+            if (it.isItem){
+                mutableList.add(ItemBuilder(it)
+                    .setName("<reset><#ebb734>${it.name.replace("_", " ").toSmallText()}".translateColor())
+                    .addLine(" ")
+                    .setLocalizedName(it.name)
+                    .addLine("<reset><gray>ᴄʟɪᴄᴋ ᴛᴏ ᴀᴅᴅ ɴᴇᴡ ᴍᴀx ᴀᴍᴏᴜɴᴛ".translateColor()).build())
+            }
+        }
+    }
+    return mutableList
 }

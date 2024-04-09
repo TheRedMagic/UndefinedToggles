@@ -1,20 +1,23 @@
 package com.redmagic.undefinedtoggles.gui.admin.sub
 
 import com.redmagic.undefinedapi.builders.ItemBuilder
-import com.redmagic.undefinedapi.extension.string.toSmallText
 import com.redmagic.undefinedapi.extension.string.translateColor
 import com.redmagic.undefinedapi.menu.MenuManager.openMenu
 import com.redmagic.undefinedapi.menu.MenuSize
 import com.redmagic.undefinedapi.menu.normal.UndefinedMenu
 import com.redmagic.undefinedapi.menu.normal.button.Button
 import com.redmagic.undefinedapi.menu.normal.button.MenuButton
+import com.redmagic.undefinedapi.menu.presets.UndefinedDefaultPageMenu
 import com.redmagic.undefinedtoggles.UndefinedToggles
 import com.redmagic.undefinedtoggles.data.types.getList
-import com.redmagic.undefinedtoggles.gui.admin.sub.page.BlockedCommandPageGUI
+import com.redmagic.undefinedtoggles.data.types.toItemStacks
+import com.redmagic.undefinedtoggles.exstions.getMaxAmount
+import com.redmagic.undefinedtoggles.gui.admin.sub.page.command.BlockedCommandPageGUI
+import com.redmagic.undefinedtoggles.gui.admin.sub.page.maxAmount.MaxAmountChoosePageGUI
+import com.redmagic.undefinedtoggles.gui.admin.sub.page.maxAmount.MaxAmountPageMenu
+import net.wesjd.anvilgui.AnvilGUI
 import org.bukkit.Material
 import org.bukkit.inventory.Inventory
-import org.bukkit.inventory.ItemFlag
-import org.bukkit.inventory.ItemStack
 
 class BlocksGUI(private val plugin: UndefinedToggles): UndefinedMenu("ʙʟᴏᴄᴋᴇᴅѕ", MenuSize.MINI) {
     override fun generateInventory(): Inventory = createInventory {
@@ -59,5 +62,12 @@ class BlocksGUI(private val plugin: UndefinedToggles): UndefinedMenu("ʙʟᴏᴄ
             .addLine(" ")
             .addLine("<reset><gray>ᴄʟɪᴄᴋ ᴛᴏ ᴏᴘᴇɴ ᴍᴀx ᴀᴍᴏᴜɴᴛ ᴍᴇɴᴜ".translateColor()).build())
 
+        addButton(Button(15){
+
+            player.openMenu(MaxAmountPageMenu(plugin, plugin.configManager.maxAmount.maxAmount.toItemStacks()))
+
+        })
+
     }
+
 }

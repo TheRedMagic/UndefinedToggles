@@ -4,8 +4,14 @@ import com.redmagic.undefinedapi.UndefinedAPI
 import com.redmagic.undefinedapi.scheduler.TimeUnit
 import com.redmagic.undefinedapi.scheduler.repeatingTask
 import com.redmagic.undefinedtoggles.commands.AdminCommand
+import com.redmagic.undefinedtoggles.cooldowns.CoolDownEvent
 import com.redmagic.undefinedtoggles.data.ConfigManager
+import com.redmagic.undefinedtoggles.data.types.Cooldowns
 import com.redmagic.undefinedtoggles.gui.GUIManager
+import com.redmagic.undefinedtoggles.toggles.CraftingTogglesEvent
+import com.redmagic.undefinedtoggles.toggles.ElytraTogglesEvent
+import com.redmagic.undefinedtoggles.toggles.ExplosionTogglesEvent
+import com.redmagic.undefinedtoggles.toggles.VillagerTogglesEvent
 import org.bukkit.Material
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.plugin.java.JavaPlugin
@@ -40,10 +46,9 @@ class UndefinedToggles : JavaPlugin() {
 
         guiManager = GUIManager(this)
 
-        commands()
-
         startAutoSaving()
 
+        events()
 
     }
 
@@ -60,6 +65,14 @@ class UndefinedToggles : JavaPlugin() {
 
     private fun commands(){
         AdminCommand(this)
+    }
+
+    private fun events(){
+        CoolDownEvent()
+        CraftingTogglesEvent()
+        VillagerTogglesEvent()
+        ExplosionTogglesEvent()
+        ElytraTogglesEvent()
     }
 
     private fun loadConfig(){
