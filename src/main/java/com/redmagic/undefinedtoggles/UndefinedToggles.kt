@@ -4,15 +4,18 @@ import com.redmagic.undefinedapi.UndefinedAPI
 import com.redmagic.undefinedapi.scheduler.TimeUnit
 import com.redmagic.undefinedapi.scheduler.repeatingTask
 import com.redmagic.undefinedtoggles.commands.AdminCommand
-import com.redmagic.undefinedtoggles.cooldowns.CoolDownEvent
+import com.redmagic.undefinedtoggles.modifier.cooldowns.CoolDownEvent
 import com.redmagic.undefinedtoggles.data.ConfigManager
-import com.redmagic.undefinedtoggles.data.types.Cooldowns
 import com.redmagic.undefinedtoggles.gui.GUIManager
-import com.redmagic.undefinedtoggles.toggles.CraftingTogglesEvent
-import com.redmagic.undefinedtoggles.toggles.ElytraTogglesEvent
-import com.redmagic.undefinedtoggles.toggles.ExplosionTogglesEvent
-import com.redmagic.undefinedtoggles.toggles.VillagerTogglesEvent
-import org.bukkit.Material
+import com.redmagic.undefinedtoggles.modifier.maxAmount.MaxAmountEvent
+import com.redmagic.undefinedtoggles.modifier.reduction.BlockReductionEvent
+import com.redmagic.undefinedtoggles.modifier.reduction.EntityReductionEvent
+import com.redmagic.undefinedtoggles.modifier.spawning.EntitySpawningEvent
+import com.redmagic.undefinedtoggles.modifier.spawning.ItemSpawningEvent
+import com.redmagic.undefinedtoggles.modifier.toggles.CraftingTogglesEvent
+import com.redmagic.undefinedtoggles.modifier.toggles.ElytraTogglesEvent
+import com.redmagic.undefinedtoggles.modifier.toggles.ExplosionTogglesEvent
+import com.redmagic.undefinedtoggles.modifier.toggles.VillagerTogglesEvent
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.plugin.java.JavaPlugin
 import java.io.File
@@ -73,6 +76,11 @@ class UndefinedToggles : JavaPlugin() {
         VillagerTogglesEvent()
         ExplosionTogglesEvent()
         ElytraTogglesEvent()
+        EntityReductionEvent()
+        BlockReductionEvent()
+        EntitySpawningEvent()
+        ItemSpawningEvent()
+        MaxAmountEvent()
     }
 
     private fun loadConfig(){

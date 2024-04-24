@@ -4,8 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/UndefinedToggles.main.iml" filepath="$PROJECT_DIR$/.idea/modules/UndefinedToggles.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/UndefinedToggles.test.iml" filepath="$PROJECT_DIR$/.idea/modules/UndefinedToggles.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.redmagic.UndefinedToggles.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.redmagic.UndefinedToggles.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.redmagic.UndefinedToggles.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.redmagic.UndefinedToggles.test.iml" />
     </modules>
   </component>
 </project>
