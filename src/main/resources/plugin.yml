@@ -4,5 +4,6 @@ main: com.redmagic.undefinedtoggles.UndefinedToggles
 api-version: '1.20'
 commands:
   admintoggles:
+    permission: "undefined.toggles.admincommand"
     aliases:
       - at

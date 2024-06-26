@@ -26,11 +26,12 @@ repositories {
 dependencies {
     compileOnly("org.spigotmc:spigot-api:1.20.4-R0.1-SNAPSHOT")
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
-    implementation("com.redmagic:UndefinedAPI:0.4.17")
-    implementation("net.wesjd:anvilgui:1.9.2-SNAPSHOT")
+    implementation("com.redmagic:UndefinedAPI:0.4.32")
+    implementation("net.wesjd:anvilgui:1.9.6-SNAPSHOT")
 }
 
 tasks {
+
     shadowJar {
         archiveFileName.set("UndefinedToggles-shadow.jar")
     }

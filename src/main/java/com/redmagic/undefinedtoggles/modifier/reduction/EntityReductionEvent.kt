@@ -18,9 +18,7 @@ class EntityReductionEvent {
             if (reduction.isNegative()){
                 return@event
             }
-            Bukkit.broadcastMessage(reduction.toString())
             val reducedDamage: Double = damage * (1 - (reduction / 100))
-            Bukkit.broadcastMessage(reducedDamage.toString())
             this.damage = reducedDamage
         }
 
@@ -37,7 +35,6 @@ class EntityReductionEvent {
             }
 
             val reductionDamage = damage * (1 - (reduction / 100))
-            Bukkit.broadcastMessage(reductionDamage.toString())
             damage = reductionDamage
         }
 
